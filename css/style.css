@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+body {
+	background: #f1fbff;
+	padding-top: 70px;
+}
+
+.section-padding {
+	padding: 100px 0;
+}
+  /* --- Carousel Responsive Fix --- start*/
+  .carousel-item img {
+	object-fit: cover;        /* कटे‑फटे बिना फ्रेम भरे */
+	width: 100%;
+	height: 100vh;            /* डेस्कटॉप जैसा ही */
+  }
+  
+  /* मोबाइल पर height घटाएँ (≤ 767px) */
+  @media (max-width: 767px) {
+	.carousel-inner:before{
+		height: 82%;	
+	}
+  }
+  
+  /* extra‑small (≤ 575px) पर और कम */
+  @media (max-width: 575px) {
+	.carousel-inner:before{
+		height: 82%;	
+	}
+  }
+  /* --- Carousel Responsive Fix --- end */
+.carousel-item {
+	height: 100vh;
+	min-height: 300px;
+}
+
+.carousel-caption {
+	bottom: 220px;
+	z-index: 2;
+}
+
+.carousel-caption h5 {
+	font-size: 45px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 25px;
+}
+
+.carousel-caption p {
+	width: 60%;
+	margin: auto;
+	font-size: 18px;
+	line-height: 1.9;
+}
+
+.carousel-inner:before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1;
+}
+
+.navbar .getstarted {
+	background: #106eea;
+	margin-left: 30px;
+	border-radius: 4px;
+	font-weight: 400;
+	color: #fff;
+	text-decoration: none;
+	padding: .5rem 1rem;
+	line-height: 2.3;
+}
+
+.navbar-nav .nav-link.active {
+	font-weight: 600;
+	border-bottom: 2px solid #ffc107;
+}
+
+.navbar-nav .nav-link {
+	color: #333 !important;
+	font-weight: 500;
+	transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+	color: #007bff !important;
+}
+
+.navbar {
+	background-color: #ffffff;
+	/* या bg-light */
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-nav a {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.navbar-light .navbar-brand {
+	color: #000;
+	font-size: 25px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+	color: #000;
+}
+
+.navbar .nav-link i {
+	vertical-align: middle;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+	color: #000;
+}
+
+.w-100 {
+	height: 100vh;
+}
+
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #fff;
+	margin-left: auto;
+}
+
+.portfolio .card {
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.team .card {
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.services .card-body i {
+	font-size: 50px;
+}
+
+.team .card-body i {
+	font-size: 20px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.carousel-caption {
+		bottom: 370px;
+	}
+
+	.carousel-caption p {
+		width: 100%;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+
+	.img-area img {
+		width: 100%;
+	}
+}
+
+.img-fluid {
+	transition: transform 0.3s ease;
+}
+
+.img-fluid:hover {
+	transform: scale(1.03);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 767px) {
+	.navbar-nav {
+		text-align: center;
+	}
+
+	.carousel-caption {
+		bottom: 125px;
+	}
+
+	.carousel-caption h5 {
+		font-size: 17px;
+	}
+
+	.carousel-caption a {
+		padding: 10px 15px;
+		font-size: 15px;
+	}
+
+	.carousel-caption p {
+		width: 100%;
+		line-height: 1.6;
+		font-size: 12px;
+	}
+
+	.about-text {
+		padding-top: 50px;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 991px) {
+	.navbar-collapse {
+		background-color: #fff;
+		padding-bottom: 1rem;
+	}
+}
+
+@media (min-width: 992px) {
+	#portfolio .card {
+	  margin-bottom: 2rem;   /* 32px */
+	}
+  }
+
+.service-card:hover {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	transform: scale(1.02);
+	transition: all 0.3s ease-in-out;
+}
+
+.about-img img {
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+	/* shadow even when not hovered */
+	border-radius: 10px;
+}
+
+.about-img img:hover {
+	transform: scale(1.05);
+	/* slight zoom */
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+	/* deeper shadow on hover */
+}
+
+/*
+.card img {
+  transition: transform 0.3s ease;
+}
+.card img:hover {
+  transform: scale(1.08);
+}*/
+.trustee-card {
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
+	border: none;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.trustee-card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.treatment-section {
+	padding: 30px;
+	background: #f9f9f9;
+}
+
+.treatment-section h2 {
+	text-align: center;
+	color: #2a3d66;
+	margin-bottom: 20px;
+}
+
+.treatment-section table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+
+.treatment-section th,
+.treatment-section td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+}
+
+.treatment-section th {
+	background-color: #e0f0f4;
+}
+
+.treatment-section tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.note {
+	background: #fffbe6;
+	border-left: 5px solid #f4c430;
+	padding: 15px;
+	font-size: 14px;
+	color: #333;
+	margin-top: 20px;
+}
+
+.search-bar {
+	text-align: right;
+	margin-bottom: 20px;
+		
+}
+
+.search-bar input {
+	padding: 10px;
+	width: 80%;
+	max-width: 400px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.image-gallery {
+	margin: 40px 0;
+	text-align: center;
+}
+
+.image-gallery .gallery {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.image-gallery img {
+	width: 200px;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.booking-form {
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	max-width: 600px;
+	margin: auto;
+}
+
+.booking-form form {
+	display: flex;
+	flex-direction: column;
+}
+
+.booking-form label {
+	margin: 10px 0 5px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form button {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.booking-form button {
+	background-color: #3aafa9;
+	color: white;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+}
+
+.booking-form button:hover {
+	background-color: #2b7a78;
+}
+
+footer p {
+	
+	margin-bottom: 0;
+	font-size: 0.95rem;
+  }
+  .gallery-img {
+    width: 100%;                /* full column width */
+    height: 200px;              /* fixed height for uniform grid */
+    object-fit: cover;          /* crop while preserving aspect ratio */
+    border-radius: 8px;
+    transition: transform .3s ease, box-shadow .3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    cursor: pointer;
+  }
+  .gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  }
+
+  /* Responsive tweak – taller images on very small screens */
+  @media (max-width: 576px) {
+    .gallery-img { height: 160px; }
+  }
+
+  
+
+  .container .content .right-side{
+   width: 75%;
+   margin-left: 55px;
+}
+
+
+  .container .content{
+    flex-direction: column-reverse;
+  }
+ .container .content .left-side{
+   width: 100%;
+   flex-direction: row;
+   margin-top: 40px;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
+ .container .content .left-side::before{
+   display: none;
+ }
+ .container .content .right-side{
+   width: 100%;
+   margin-left: 0;
+ }
+#backToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  display: none;
+  z-index: 999;
+  padding: 10px 14px;
+  font-size: 18px;
+  transition: opacity 0.3s ease;
+}
+
+.auth-container .forms {
+	display: flex;
+	flex-direction: column;
+	transition: height 0.2s ease;
+}
+
+.auth-container .form {
+	width: 100%;
+	padding: 30px;
+	background-color: #fff;
+}
+
+.auth-container .form .title {
+	position: relative;
+	font-size: 27px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.auth-container .form .title::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 3px;
+	width: 30px;
+	background-color: #4070f4;
+	border-radius: 25px;
+}
+
+.auth-container .input-field {
+	position: relative;
+	height: 50px;
+	width: 100%;
+	margin-top: 25px;
+}
+
+.auth-container .input-field input {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	padding: 0 40px 0 30px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	border-bottom: 2px solid #ccc;
+	border-top: 2px solid transparent;
+	transition: all 0.2s ease;
+}
+
+.auth-container .input-field input:focus {
+	border-bottom-color: #4070f4;
+	box-shadow: 0 2px 6px rgba(64, 112, 244, 0.25);
+}
+
+.auth-container .input-field i {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 22px;
+	transition: all 0.2s ease;
+}
+
+.auth-container .input-field i.icon {
+	left: 0;
+}
+
+.auth-container .input-field i.showHidePw {
+	right: 0;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.auth-container .input-field input:focus ~ i.icon {
+	color: #4070f4;
+}
+
+.auth-container .checkbox-text {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.auth-container .checkbox-content {
+	display: flex;
+	align-items: center;
+}
+
+.auth-container .checkbox-content input {
+	margin-right: 10px;
+	accent-color: #4070f4;
+}
+
+.auth-container .form .text {
+	color: #333;
+	font-size: 14px;
+}
+
+.auth-container .form a.text {
+	color: #4070f4;
+	text-decoration: none;
+}
+
+.auth-container .form a.text:hover {
+	text-decoration: underline;
+}
+
+.auth-container .button {
+	margin-top: 35px;
+}
+
+.auth-container .button input {
+	width: 100%;
+	border: none;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	border-radius: 6px;
+	background-color: #4070f4;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	padding: 12px 0;
+}
+
+.auth-container .button input:hover {
+	background-color: #265df2;
+	box-shadow: 0 4px 10px rgba(64, 112, 244, 0.3);
+}
+
+.auth-container .login-signup {
+	margin-top: 25px;
+	text-align: center;
+}
+
+ /* ==== Booking‑Form (नया) – theme‑matched styling ======================= */
+
+/* कार्ड जैसा wrapper पहले‑से .booking-form में है, थोड़े रंग tweak ⤵︎ */
+.booking-form {
+	background-color: #ffffff;          /* सफ़ेद कार्ड */
+	border: 1px solid #dfefff;          /* हल्का नीला outline */
+	box-shadow: 0 4px 18px rgba(42, 61, 102, 0.08);
+  }
+  
+  /* Label & input spacing already OK; बस रंग व फॉन्ट वज़न match करें */
+  .booking-form label {
+	font-weight: 500;
+	color: #2a3d66;
+  }
+  
+  .booking-form input,
+  .booking-form select {
+	font-size: 0.95rem;
+	background-color: #f8fbff;
+	transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  
+  .booking-form input:focus,
+  .booking-form select:focus {
+	border-color: #3aafa9;
+	box-shadow: 0 0 0 .15rem rgba(58, 175, 169, .25);
+  }
+  
+  .booking-form .form-check-input {
+	accent-color: #3aafa9;             /* checkbox theme */
+  }
+  
+  /* “बुक करें” बटन – theme colours */
+  .booking-form button {
+	background-color: #3aafa9;
+  }
+  .booking-form button:hover {
+	background-color: #2b7a78;
+  }
+  
+  /* ---------- Price‑Summary Card inside booking‑form ---------- */
+  .booking-form .card {
+	border: 1px solid #e0f0f4;
+	border-radius: 8px;
+	background: #f7fcff;
+  }
+  .booking-form .card-title {
+	font-size: 1.05rem;
+	color: #2a3d66;
+  }
+  .booking-form .card p {
+	font-size: 0.9rem;
+	margin-bottom: .35rem;
+	color: #333;
+  }
+  .booking-form .card hr {
+	margin: .7rem 0 .9rem;
+	opacity: .35;
+  }
+  .booking-form .card h4 {
+	color: #106eea;                    /* नीला highlight */
+	font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Grand‑Total को हल्की एनिमेशन दे दें */
+  #grandTotal {
+	transition: color .25s ease, transform .25s ease;
+  }
+  #grandTotal.changed {                /* JS से .changed क्लास add/remove */
+	color: #f4b400;                    /* हल्का पीला */
+	transform: scale(1.08);
+  }
+  
+  /* ---------- Responsive tweak: form‑in‑modal or small screens ---------- */
+  @media (max-width: 575.98px) {
+	.booking-form { padding: 20px 18px; }
+	.booking-form .row.g-3 > [class*="col-"] { padding-right: 6px; padding-left: 6px; }
+	.booking-form .card { margin-top: 10px; }
+  }
+  

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Bookings - Shree Mahaveer Ji Trust</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+  body {
+    background-color: #f5f5f5;
+    padding-top: 80px;
+  }
+
+  .table thead {
+    background-color: #198754;
+    color: #fff;
+  }
+
+  .logout-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* ✅ Responsive fix */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table td, .table th {
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 576px) {
+    .table td, .table th {
+      font-size: 0.75rem;
+      padding: 8px 4px;
+      white-space: normal;
+    }
+  }
+
+  .email-wrap {
+  white-space: normal !important;
+  word-break: break-word;
+  font-size: 0.85rem;
+  max-width: 140px;
+}
+
+@media (max-width: 576px) {
+  .email-wrap {
+    max-width: 100px;
+    font-size: 0.75rem;
+  }
+}
+
+</style>
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- ✅ NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/index.html"><span class="text-warning">Shree </span>Mahaveer Ji</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="page/about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="page/treatments.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="page/gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="/index.html#team">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="/index.html#contact">Contact</a></li>
+        <li class="nav-item dropdown logout-dropdown d-none" id="userGreeting">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <span id="usernameDisplay"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn">Logout</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" id="loginIcon">
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authModal" title="Login">
+            <i class="bi bi-person-circle fs-5"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main class="flex-grow-1">
+<!-- ✅ BOOKINGS TABLE -->
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Your Booking Details</h5>
+    </div>
+    <div class="card-body table-responsive">
+      <table class="table table-bordered text-center align-middle">
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Name</th>
+            <!--<th>Email</th>-->
+            <th>Room Cost</th>
+            <th>Extra Cost</th>
+            <th>Total</th>
+            <th>Payment Method</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="bookingTableBody">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+      <p class="text-muted mt-3 mb-0 text-center" id="noBookingsMsg" style="display: none;">You have no bookings yet.</p>
+    </div>
+  </div>
+</div>
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-3 text-left">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Shree Mahaveer Ji Trust. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+
+<!-- ✅ Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // 🔒 Navbar login/logout update
+  const username = localStorage.getItem("username");
+  const loginIcon = document.getElementById("loginIcon");
+  const userGreeting = document.getElementById("userGreeting");
+  const usernameDisplay = document.getElementById("usernameDisplay");
+
+  if (username) {
+    loginIcon.classList.add("d-none");
+    userGreeting.classList.remove("d-none");
+    usernameDisplay.innerText = username;
+  }
+
+  document.getElementById("logoutBtn")?.addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.removeItem("username");
+    localStorage.setItem("isLoggedIn", "false");
+    window.location.href = "/index.html";
+  });
+
+  // 📋 Booking Table Loader
+  const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+  const tableBody = document.getElementById("bookingTableBody");
+  const noBookingsMsg = document.getElementById("noBookingsMsg");
+
+  const userBookings = bookings.filter(b => b.username === username);
+  if (userBookings.length === 0) {
+    noBookingsMsg.style.display = "block";
+  } else {
+    userBookings.forEach(booking => {
+      const row = document.createElement("tr");
+    row.innerHTML = `
+  <td>${booking.id}</td>
+  <td>${booking.name}</td>
+  <td>₹${booking.roomCost}</td>
+  <td>₹${booking.extraCost}</td>
+  <td><strong class="text-success">₹${booking.total}</strong></td>
+  <td>${booking.method.toUpperCase()}</td>
+  <td>${booking.date}</td>
+  <td>${booking.time}</td>
+`;
+
+      tableBody.appendChild(row);
+    });
+  }
+
+  
+</script>
+</body>
+</html>

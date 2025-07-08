@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--divinectorweb.com-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+
+    <!-- All CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+ <link href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light  fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html"><span class="text-warning">Shree </span>Mahaveer Ji</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="page/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="page/gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                         <li class="nav-item"><a class="nav-link" href="/index.html#contact">Contact</a></li>
+                    </li>
+                    <!-- Login Icon -->
+          <li class="nav-item" id="loginIcon">
+  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authModal" title="Login">
+    <i class="bi bi-person-circle fs-6"></i>
+  </a>
+</li>
+
+                    <!-- Logged In Username -->
+                    <li class="nav-item d-none" id="userGreeting">
+                        <span class="nav-link text-success fw-bold" id="usernameDisplay"></span>
+                    </li>
+
+                </ul>
+                <div class="d-lg-none text-end px-3 py-2">
+                    <button type="button" class="btn-close" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="treatment-section">
+
+        <!-- ✅ Add-on 1: Search bar -->
+        <section class="search-bar">
+            <input type="text" id="searchInput" placeholder="इलाज खोजें जैसे 'मसाज', 'शिरोधारा'..."
+                onkeyup="filterTreatment()">
+        </section>
+
+        <!-- ✅ Room Pricing Table -->
+        <section class="room-pricing">
+            <h2>रूम चार्ज (प्रति दिन)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>रूम प्रकार</th>
+                        <th>एक व्यक्ति</th>
+                        <th>दो व्यक्ति</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AC कॉटेज</td>
+                        <td>₹1800</td>
+                        <td>₹2350</td>
+                    </tr>
+                    <tr>
+                        <td>AC रूम</td>
+                        <td>₹1300</td>
+                        <td>₹1850</td>
+                    </tr>
+                    <tr>
+                        <td>Non-AC रूम</td>
+                        <td>₹1100</td>
+                        <td>₹1650</td>
+                    </tr>
+                    <tr>
+                        <td>जनरल वार्ड</td>
+                        <td colspan="2">₹800</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ✅ Treatment List Table -->
+        <section class="treatment-list">
+            <h2>उपचार सूची</h2>
+            <table id="treatmentTable">
+                <thead>
+                    <tr>
+                        <th>क्रम</th>
+                        <th>सेवा</th>
+                        <th>शुल्क (₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>पंजीकरण शुल्क</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>परामर्श शुल्क</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>फुल बॉडी मसाज</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>भाप स्नान</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>मिट्टी पट्टी</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>कटी स्नान</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>फिजियोथैरेपी मशीन</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>अभ्यंग मसाज (45-50min)</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>हनी नेक्टर मसाज (30-35min)</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>कमर पोटली</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>घुटना पोटली /1</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>घुटना पोटली /2</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>घुटना+कमर पोटली</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>हाथ /1</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>हाथ /2</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>संपूर्ण पोटली</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>कटी बस्ती</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>जानु बस्ती</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>ग्रीवा बस्ती</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>शिरोधारा तेल से (40min)</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>शिरोधारा काढ़े से (40min)</td>
+                        <td>400</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ✅ Add-on 2: Image Gallery -->
+        <section class="image-gallery">
+            <h2>चिकित्सालय की सुविधाएं</h2>
+            <div class="gallery">
+                <img src="/img/aqqueprsure.jpg" alt="मसाज सुविधा">
+                <img src="/img/baap.jpg" alt="भाप स्नान">
+                <img src="/img/depositphotos_101072156-stock-photo-air-conditioner-install-on-wall.jpg" alt="AC रूम">
+                <img src="/img/indoor-photo-physio-clinic-earth-260nw-2507920483.webp" alt="फिजियोथैरेपी">
+            </div>
+        </section>
+<!-- Booking Form + Live Calculator -->
+<section class="booking-form my-5">
+  <div class="container">
+    <div class="card shadow-sm p-4">
+      <h2 class="text-center mb-4">Book Your Room</h2>
+      <form id="bookingForm">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="आपका नाम" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" id="mobile" placeholder="मोबाइल नंबर" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="persons" class="form-label">Number of Persons</label>
+            <select class="form-select" id="persons" required>
+              <option value="">व्यक्ति चुनें</option>
+              <option value="1">1 Person</option>
+              <option value="2">2 Persons</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="roomType" class="form-label">Room Category</label>
+            <select class="form-select" id="roomType" required>
+              <option value="">Select Room</option>
+              <option value="ac_cottage">AC Cottage</option><!-- – ₹1800/day-->
+              <option value="ac_room">AC Room</option><!-- – ₹1300/day-->
+              <option value="non_ac_room">Non‑AC Room</option><!-- – ₹1100/day-->
+              <option value="general_ward">General Ward</option><!-- – ₹800/day -->
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="days" class="form-label">Number of Days</label>
+            <input type="number" class="form-control" id="days" min="1" value="1" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Price (Per Day):</label>
+            <p class="form-control-plaintext fw-bold">₹<span id="roomPrice">0</span></p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <a class="text-decoration-none" data-bs-toggle="collapse" href="#extraTreatmentsCollapse" role="button"
+            aria-expanded="false" aria-controls="extraTreatmentsCollapse">
+            <i class="bi bi-plus-circle"></i> Extra charges for extra treatments (One Day)
+          </a>
+          <div class="collapse mt-2" id="extraTreatmentsCollapse">
+           <div class="row">
+  <div class="col-md-6">
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="भाप स्नान" id="t1"><label class="form-check-label" for="t1">भाप स्नान – ₹100</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="कटी बस्ती" id="t2"><label class="form-check-label" for="t2">कटी बस्ती – ₹250</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="फुल बॉडी मसाज" id="t3"><label class="form-check-label" for="t3">फुल बॉडी मसाज – ₹150</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="मिट्टी पट्टी" id="t4"><label class="form-check-label" for="t4">मिट्टी पट्टी – ₹50</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="फिजियोथैरेपी मशीन" id="t5"><label class="form-check-label" for="t5">फिजियोथैरेपी मशीन – ₹100</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="अभ्यंग मसाज (45-50min)" id="t6"><label class="form-check-label" for="t6">अभ्यंग मसाज (45-50min) – ₹400</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="हनी नेक्टर मसाज (30-35min)" id="t7"><label class="form-check-label" for="t7">हनी नेक्टर मसाज (30-35min) – ₹400</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="कमर पोटली" id="t8"><label class="form-check-label" for="t8">कमर पोटली – ₹50</label></div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="घुटना पोटली /1" id="t9"><label class="form-check-label" for="t9">घुटना पोटली /1 – ₹50</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="घुटना पोटली /2" id="t10"><label class="form-check-label" for="t10">घुटना पोटली /2 – ₹100</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="घुटना+कमर पोटली" id="t11"><label class="form-check-label" for="t11">घुटना+कमर पोटली – ₹150</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="हाथ /1" id="t12"><label class="form-check-label" for="t12">हाथ /1 – ₹50</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="हाथ /2" id="t13"><label class="form-check-label" for="t13">हाथ /2 – ₹100</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="संपूर्ण पोटली" id="t14"><label class="form-check-label" for="t14">संपूर्ण पोटली – ₹250</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="जानु बस्ती" id="t15"><label class="form-check-label" for="t15">जानु बस्ती – ₹250</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="ग्रीवा बस्ती" id="t16"><label class="form-check-label" for="t16">ग्रीवा बस्ती – ₹250</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="शिरोधारा तेल से (40min)" id="t17"><label class="form-check-label" for="t17">शिरोधारा तेल से (40min) – ₹800</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" value="शिरोधारा काढ़े से (40min)" id="t18"><label class="form-check-label" for="t18">शिरोधारा काढ़े से (40min) – ₹400</label></div>
+  </div>
+</div>
+
+          </div>
+        </div>
+
+        <!-- ✅ Total Breakdown -->
+        <div class="row mt-2 mb-2">
+          <div class="col-md-3">
+            <strong>Room Charges:</strong> ₹<span id="roomCost">0</span>
+          </div>
+          <div class="col-md-5">
+            <strong>Extra Treatment:</strong> ₹<span id="extraCost">0</span>
+          </div>
+          <div class="col-md-3">
+            <strong>Total:</strong> ₹<span id="grandTotal" class="text-success fw-bold">0</span>
+          </div>
+        </div>
+
+        <ul class="list-unstyled mb-3">
+          <li class="text-success"><i class="bi bi-check-circle"></i> Treatment free</li>
+          <li class="text-success"><i class="bi bi-check-circle"></i> Meals included</li>
+        </ul>
+
+        <div class="d-flex justify-content-between gap-2 mt-4">
+  <button type="reset" class="btn btn-outline-secondary">Delete Booking</button>
+  <button type="submit" class="btn btn-success">Book Now</button>
+</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+        
+
+        <!-- Note -->
+        <div class="note">
+            <strong>नोट:</strong> सभी शुल्क प्रति दिन / व्यक्ति हैं। बुकिंग के लिए समय से संपर्क करें।
+        </div>
+
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginName" class="form-label">Enter Your Name</label>
+                            <input type="text" class="form-control" id="loginName" required placeholder="e.g. Harshit">
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100">Login</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  <!-- footer starts -->
+ <footer class="bg-dark text-white py-3 text-left">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Shree Mahaveer Ji Trust. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- footer ends -->
+
+
+<button id="backToTopBtn" class="btn btn-warning rounded-circle shadow" title="Go to top">
+<i class="bi bi-arrow-up"></i>
+</button>
+
+ <!-- Login & Signup Modal -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-body p-4">
+          <div class="container auth-container">
+            <div class="forms">
+              <!-- Login Form -->
+              <div class="form login">
+                <span class="title">Login</span>
+                <form action="#">
+                  <div class="input-field">
+                    <input type="text" placeholder="Enter your email" required />
+                    <i class="icon uil uil-envelope"></i>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" class="password" placeholder="Enter your password" required />
+                    <i class="icon uil uil-lock"></i>
+                    <i class="showHidePw uil uil-eye-slash"></i>
+                  </div>
+                  <div class="checkbox-text">
+                    <div class="checkbox-content">
+                      <input type="checkbox" id="logCheck" />
+                      <label for="logCheck" class="text">Remember me</label>
+                    </div>
+                    <a href="#" class="text">Forgot password?</a>
+                  </div>
+                  <div class="button">
+                    <input type="submit" value="Login" />
+                  </div>
+                </form>
+                <div class="login-signup">
+                  <span class="text">Not a member?
+                    <a href="#" class="text signup-link">Signup Now</a>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Signup Form -->
+              <div class="form signup d-none">
+                <span class="title">Registration</span>
+                <form action="#">
+                  <div class="input-field">
+                    <input type="text" placeholder="Enter your name" required />
+                    <i class="icon uil uil-user"></i>
+                  </div>
+                  <div class="input-field">
+                    <input type="text" placeholder="Enter your email" required />
+                    <i class="icon uil uil-envelope"></i>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" class="password" placeholder="Create a password" required />
+                    <i class="icon uil uil-lock"></i>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" class="password" placeholder="Confirm a password" required />
+                    <i class="icon uil uil-lock"></i>
+                    <i class="showHidePw uil uil-eye-slash"></i>
+                  </div>
+                  <div class="checkbox-text">
+                    <div class="checkbox-content">
+                      <input type="checkbox" id="termCon" />
+                      <label for="termCon" class="text">I accept all terms and conditions</label>
+                    </div>
+                  </div>
+                  <div class="button">
+                    <input type="submit" value="Signup" />
+                  </div>
+                </form>
+                <div class="login-signup">
+                  <span class="text">Already a member?
+                    <a href="#" class="text login-link">Login Now</a>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+    <!-- All Js -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+      <script src="/js/auth.js"></script>
+</body>
+
+</html>
