@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
             ${username}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="page/my-booking.html" id="myBookingLink">My Booking</a></li>
+          <li><a class="dropdown-item" href="my-booking.html" id="myBookingLink">My Booking</a></li>
             <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
           </ul>
         </div>
@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!document.getElementById("myBookingLink")) {
       const li = document.createElement("li");
       li.className = "nav-item";
-      li.innerHTML = `<a class="nav-link" id="myBookingLink" href="page/my-booking.html">My Booking</a>`;
+      li.innerHTML = `<a class="nav-link" id="myBookingLink" href="my-booking.html">My Booking</a>`;
       document.querySelector(".navbar-nav").appendChild(li);
     }
   }
@@ -64,6 +64,6 @@ window.addEventListener("click", function (e) {
     e.preventDefault();
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("username");
-    window.location.href = "/index.html";
+    window.location.href = "index.html";
   }
 });

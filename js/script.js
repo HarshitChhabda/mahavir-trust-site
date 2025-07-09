@@ -373,7 +373,7 @@ document.getElementById("bookingForm")?.addEventListener("submit", function (e) 
   localStorage.setItem("bookingInfo", JSON.stringify(bookingData));
 
   // ✅ Redirect to payment page
-  window.location.href = "page/pay.html";
+  window.location.href = "pay.html";
 });
 
 

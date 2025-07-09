@@ -22,7 +22,7 @@
 <!-- 🔼 Navbar (optional) -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container">
-    <a class="navbar-brand fw-bold text-success" href="/index.html">Shree Mahaveer Ji Trust</a>
+    <a class="navbar-brand fw-bold text-success" href="index.html">Shree Mahaveer Ji Trust</a>
   </div>
 </nav>
 
@@ -79,8 +79,8 @@
   <!-- UPI QR Section -->
   <div id="upiSection" class="d-none">
     <p class="mb-2 fw-medium">Scan this QR with any UPI App:</p>
-    <img src="/images/upi-qr.png" alt="UPI QR" class="img-fluid rounded border" style="max-width: 250px;">
-    <p class="text-muted mt-2 small">UPI ID: <strong>shreemahaveer@upi</strong></p>
+    <img src="img/upi qr.jpg" alt="UPI QR" class="img-fluid rounded border" style="max-width: 50px;">
+    <p class="text-muted mt-2 small">UPI ID: <strong>digam94133@barodampay</strong></p>
   </div>
 
   <!-- Card Form -->
@@ -124,7 +124,7 @@ const booking = JSON.parse(localStorage.getItem("bookingInfo"));
 
 if (!booking) {
   alert("No booking data found. Redirecting to services page.");
-  window.location.href = "page/services.html";
+  window.location.href = "services.html";
 }
 
 // Fill Summary in UI
@@ -176,7 +176,7 @@ function handlePayment() {
   localStorage.removeItem("bookingInfo");
 
   alert(`✅ Payment Successful!\nBooking ID: ${bookingID}`);
-  window.location.href = "/index.html";
+  window.location.href = "index.html";
 }
 
 document.getElementById("payerName").value = booking.name || "";
