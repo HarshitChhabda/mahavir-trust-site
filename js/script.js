@@ -1,58 +1,130 @@
 // 🔍 Treatment Table Filter
 function filterTreatment() {
-    const input = document.getElementById("searchInput");
-    const filter = input.value.toLowerCase();
-    const table = document.getElementById("treatmentTable");
-    const rows = table.getElementsByTagName("tr");
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const table = document.getElementById("treatmentTable");
+  const rows = table.getElementsByTagName("tr");
 
-    for (let i = 1; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        const service = cells[1]?.textContent?.toLowerCase() || '';
-        rows[i].style.display = service.includes(filter) ? "" : "none";
-    }
+  for (let i = 1; i < rows.length; i++) {
+    const cells = rows[i].getElementsByTagName("td");
+    const service = cells[1]?.textContent?.toLowerCase() || '';
+    rows[i].style.display = service.includes(filter) ? "" : "none";
+  }
 }
 
 // 🧠 Main Initialization
 document.addEventListener("DOMContentLoaded", function () {
-    const username = localStorage.getItem("username");
-    const loginIcon = document.getElementById("loginIcon");
-    const userGreeting = document.getElementById("userGreeting");
-    const usernameDisplay = document.getElementById("usernameDisplay");
+  const username = localStorage.getItem("username");
+  const loginIcon = document.getElementById("loginIcon");
+  const userGreeting = document.getElementById("userGreeting");
+  const usernameDisplay = document.getElementById("usernameDisplay");
 
-    /* 🔐 Navbar login UI update
-    if (username) {
-        loginIcon?.classList.add("d-none");
-        userGreeting?.classList.remove("d-none");
-        if (usernameDisplay) usernameDisplay.innerText = "👋 " + username;
-    } else {
-        loginIcon?.classList.remove("d-none");
-        userGreeting?.classList.add("d-none");
-    }
-*/
-    // 📬 Contact Form Submit Handling
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("Thank you! We will reach you soon.");
-            contactForm.reset();
-        });
-    }
+  /*
+  🔐 Navbar login UI update (uncomment to use)
+  if (username) {
+    loginIcon?.classList.add("d-none");
+    userGreeting?.classList.remove("d-none");
+    if (usernameDisplay) usernameDisplay.innerText = "👋 " + username;
+  } else {
+    loginIcon?.classList.remove("d-none");
+    userGreeting?.classList.add("d-none");
+  }
+  */
 
-    // 🖼️ Gallery Lightbox Image Viewer
-    const images = document.querySelectorAll('.gallery-img');
-    const modalEl = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImage');
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            if (modalImg && modalEl) {
-                modalImg.src = img.src;
-                const modal = new bootstrap.Modal(modalEl);
-                modal.show();
-            }
-        });
+  // 📬 Contact Form Submit Handling
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you! We will reach you soon.");
+      contactForm.reset();
     });
+  }
+
+  // 🖼️ Gallery Lightbox Image Viewer with Navigation + Keyboard + Touch
+  let currentIndex = 0;
+  const galleryImages = Array.from(document.querySelectorAll(".gallery-img"));
+  const modalEl = document.getElementById("lightboxModal");
+  const modalImg = document.getElementById("lightboxImage");
+  const closeBtn = document.querySelector(".btn-close");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
+  const lightboxModal = new bootstrap.Modal(modalEl);
+
+  function showImage(index) {
+    if (!modalImg || !modalEl) return;
+    modalImg.src = galleryImages[index].src;
+  }
+
+  // Thumbnail click
+  galleryImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      lightboxModal.show();
+    });
+  });
+
+  // Arrow clicks
+  leftArrow?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    showImage(currentIndex);
+  });
+  rightArrow?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    showImage(currentIndex);
+  });
+
+  // Close
+  closeBtn?.addEventListener("click", () => {
+    lightboxModal.hide();
+  });
+
+  // ⌨️ Keyboard arrow navigation
+  document.addEventListener("keydown", (e) => {
+    if (!modalEl.classList.contains("show")) return;
+
+    if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      showImage(currentIndex);
+    } else if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      showImage(currentIndex);
+    } else if (e.key === "Escape") {
+      lightboxModal.hide();
+    }
+  });
+
+  // 👆 Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  modalImg.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  modalImg.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+
+  function handleGesture() {
+    const delta = touchStartX - touchEndX;
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) {
+        // Swipe Left
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+      } else {
+        // Swipe Right
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      }
+      showImage(currentIndex);
+    }
+  }
 });
+
 /*
 // // ✅ Login Form Submission
 document.querySelector(".login form")?.addEventListener("submit", function (e) {
@@ -375,7 +447,6 @@ document.getElementById("bookingForm")?.addEventListener("submit", function (e) 
   // ✅ Redirect to payment page
   window.location.href = "pay.html";
 });
-
 
 
 
